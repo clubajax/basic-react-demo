@@ -30,11 +30,10 @@ const maths = {
 };
 
 export function getResult (expression) {
-	console.log('expression', expression);
+	//console.log('expression', expression);
 
 	return expression.map((value) => {
 		const num = Number(value.text);
-		console.log('num', num, value.operand, maths[value.operand]);
 		return maths[value.operand](num);
 	}).reduce((result, fn) => {
 		return fn(result);

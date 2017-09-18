@@ -56,10 +56,7 @@ export default class Calculator extends Component {
 			case 'equals':
 				exp = this.state.expression;
 				exp[exp.length - 1].text = text;
-				console.log('CALC', exp); // plus current
-				const result = getResult(exp);
-				console.log('result', result);
-				this.setState({ text: result, expression: [], mode: 'operand' });
+				this.setState({ text: getResult(exp), expression: [], mode: 'operand' });
 				break;
 			default:
 				console.warn('unrecognized value type', value.type);
