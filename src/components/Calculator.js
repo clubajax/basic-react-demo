@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import KeyPad from './KeyPad';
 import Display from './Display';
+import getValue from '../util/calc';
 import '../styles/Calculator.css';
 
 export default class Calculator extends Component {
@@ -8,27 +9,59 @@ export default class Calculator extends Component {
 		super();
 
 		this.state = {
-			text: ''
+			text: '',
+			mode: null,
+			expression: []
 		};
 
 		this.onButton = this.onButton.bind(this);
 		this.onText = this.onText.bind(this);
 	}
 
-	onButton (e) {
-		const value = e.target.textContent;
-		const isDigit = /\d|\./.test(value);
-		const isEquals = value === '=';
-		const isOperand = /\+|x|÷|-/.test(value);
+	display (value) {
+		const text = this.state.text;
 
-		if(isDigit){
-			this.setState({ text: this.state.text + value });
+		switch (value.type) {
+			case 'digit':
+				if(this.state.mode === 'operand'){
+					this.setState({ text: value.value, mode: null });
+				} else {
+					this.setState({ text: text + value.value });
+				}
+				break;
+			case 'clear':
+				this.setState({ text: '', expression: [] });
+				break;
+			case 'backspace':
+				this.setState({ text: text.substring(0, text.length - 1) });
+				break;
+			case 'percentage':
+				this.setState({ text: Number(text) * 0.01 });
+				break;
+			case 'operand':
+				this.setState({
+					expression: [...this.state.expression, {
+						operand: value.value,
+						text
+					}],
+					mode: 'operand'
+				});
+				break;
+			case 'equals':
+				console.log('CALC', this.state.expression); // plus current
+				break;
+			default:
+				console.warn('unrecognized value type', value.type);
 		}
 	}
 
+	onButton (e) {
+		this.display(getValue(e.target.textContent));
+
+	}
+
 	onText (e) {
-		console.log('e', e.key);
-		const value = e.target.textContent;
+		this.display(getValue(e.key));
 	}
 
 	render () {
