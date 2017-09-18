@@ -21,7 +21,6 @@ export default class Calculator extends Component {
 	display (value) {
 		let exp;
 		const text = this.state.text;
-
 		switch (value.type) {
 			case 'digit':
 				if(this.state.mode === 'operand'){
@@ -59,7 +58,7 @@ export default class Calculator extends Component {
 				this.setState({ text: getResult(exp), expression: [], mode: 'operand' });
 				break;
 			default:
-				console.warn('unrecognized value type', value.type);
+				console.warn('unrecognized type', value.type);
 		}
 	}
 
@@ -69,6 +68,7 @@ export default class Calculator extends Component {
 	}
 
 	onText (e) {
+		console.log('e.key', e.key);
 		this.display(getValue(e.key));
 	}
 

@@ -2,21 +2,24 @@
 function getType (value) {
 	if(/\d|\./.test(value)){
 		return 'digit';
-	} else if (/\+|x|÷|-/.test(value)) {
+	} else if (/\+|x|÷|-|\*|\//.test(value)) {
 		return 'operand';
 	}
 
 	return {
+		'enter': 'equals',
 		'=': 'equals',
 		'c': 'clear',
+		'escape': 'clear',
 		'bk': 'backspace',
+		'backspace': 'backspace',
 		'%': 'percentage'
 	}[value.toLowerCase()];
 }
 
 export function getValue (value) {
 	return {
-		value: value,
+		value: value === 'Enter' ? '=' : value,
 		type: getType(value)
 	};
 }
@@ -25,7 +28,9 @@ const maths = {
 	'+': (a) => (b) => b + a,
 	'-': (a) => (b) => b - a,
 	'÷': (a) => (b) => b / a,
+	'/': (a) => (b) => b / a,
 	'x': (a) => (b) => b * a,
+	'*': (a) => (b) => b * a,
 	'undefined': (a) => () => a
 };
 
