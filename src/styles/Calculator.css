@@ -55,7 +55,7 @@
 	flex: 0 0 50%;
 }
 
-.calculator section.buttons button.sp{
+.calculator section.buttons button.fn{
 	background-color: #ccc;
 }
 
@@ -67,6 +67,6 @@
 	background-color: #bbb;
 }
 
-.calculator section.buttons button.fn:hover{
+.calculator section.buttons button.op:hover{
 	background-color: #efbe02;
 }

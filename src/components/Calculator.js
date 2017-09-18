@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import KeyPad from './KeyPad';
 import Display from './Display';
-import getValue from '../util/calc';
+import { getValue, getResult } from '../util/calc';
 import '../styles/Calculator.css';
 
 export default class Calculator extends Component {
@@ -19,6 +19,7 @@ export default class Calculator extends Component {
 	}
 
 	display (value) {
+		let exp;
 		const text = this.state.text;
 
 		switch (value.type) {
@@ -39,16 +40,26 @@ export default class Calculator extends Component {
 				this.setState({ text: Number(text) * 0.01 });
 				break;
 			case 'operand':
+				exp = this.state.expression;
+				if(!exp.length){
+					exp.push({ text });
+					exp.push({ operand: value.value });
+				} else {
+					exp[exp.length - 1].text = text;
+					exp.push({ operand: value.value });
+				}
 				this.setState({
-					expression: [...this.state.expression, {
-						operand: value.value,
-						text
-					}],
+					expression: exp,
 					mode: 'operand'
 				});
 				break;
 			case 'equals':
-				console.log('CALC', this.state.expression); // plus current
+				exp = this.state.expression;
+				exp[exp.length - 1].text = text;
+				console.log('CALC', exp); // plus current
+				const result = getResult(exp);
+				console.log('result', result);
+				this.setState({ text: result, expression: [], mode: 'operand' });
 				break;
 			default:
 				console.warn('unrecognized value type', value.type);

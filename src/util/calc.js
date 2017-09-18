@@ -14,9 +14,26 @@ function getType (value) {
 	}[value.toLowerCase()];
 }
 
-export default function getValue (value) {
+export function getValue (value) {
 	return {
 		value: value,
 		type: getType(value)
 	};
+}
+
+const maths = {
+	'+': (a) => (b) => a + b,
+	'undefined': (a) => () => a
+};
+
+export function getResult (expression) {
+	console.log('expression', expression);
+
+	return expression.map((value) => {
+		const num = Number(value.text);
+		console.log('num', num, value.operand, maths[value.operand]);
+		return maths[value.operand](num);
+	}).reduce((result, fn) => {
+		return fn(result);
+	}, 0);
 }
