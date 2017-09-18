@@ -22,7 +22,10 @@ export function getValue (value) {
 }
 
 const maths = {
-	'+': (a) => (b) => a + b,
+	'+': (a) => (b) => b + a,
+	'-': (a) => (b) => b - a,
+	'÷': (a) => (b) => b / a,
+	'x': (a) => (b) => b * a,
 	'undefined': (a) => () => a
 };
 
