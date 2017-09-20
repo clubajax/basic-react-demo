@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default function Display ({ onText, value }) {
-	return (
-		<section className="numbers">
-			<input value={value} onKeyUp={onText}/>
-		</section>
-	);
+export default class Display extends Component {
+	render () {
+		const { onText, value } = this.props;
+		return (
+			<section className="numbers">
+				<input value={value} onKeyUp={onText} />
+			</section>
+		);
+	}
 }
