@@ -40,7 +40,8 @@ const images = {
 	reactLogo: require("./assets/reactLogo.svg"),
 	htmlLogo: require("./assets/HTML5_Logo_512.png"),
 	redOcean: require("./assets/RedOcean.jpg"),
-	clot: require("./assets/Clot.jpg")
+	clot: require("./assets/Clot.jpg"),
+	wilcox: require("./assets/karate-master-wilcox.jpg")
 };
 
 preloader(images);
@@ -196,6 +197,10 @@ export default class Presentation extends React.Component {
 						</ol>
 					</Notes>
 				</CodeSlide>
+				<Slide transition={["spin"]} bgImage={images.codeDevBG} bgDarken={.6}>
+					<Heading size={3} textColor="primary">Chase Deanda</Heading>
+					<Heading size={5} textColor="primary">Passing typeof Proptypes !== function</Heading>
+				</Slide>
 				<CodeSlide
 					transition={[]}
 					lang="js"
@@ -204,6 +209,15 @@ export default class Presentation extends React.Component {
 						{ loc: [0, 270], title: "Building a component 2017 way" },
 					]}
 				/>
+				<Slide transition={["spin"]} bgImage={images.codeDevBG} bgDarken={.6}>
+					<Heading size={3} textColor="primary">Virtual DOM</Heading>
+					<Heading size={5} textColor="primary">Eugene Lazutkin</Heading>
+				</Slide>
+				<Slide transition={["spin"]} bgImage={images.codeDevBG} bgDarken={.6}>
+					<Heading size={3} textColor="primary">Puttin' it all together</Heading>
+					<Heading size={5} textColor="primary">Mike Wilcox</Heading>
+					<Image src={images.wilcox} width="200px" margin="0 20px 0 0"/>
+				</Slide>
 				<CodeSlide
 					transition={[]}
 					lang="js"
@@ -223,7 +237,7 @@ export default class Presentation extends React.Component {
 						<ListItem>https://tylermcginnis.com/react-elements-vs-react-components/</ListItem>
 						<ListItem>https://medium.com/unicorn-supplies/angular-vs-react-vs-vue-a-2017-comparison-c5c52d620176</ListItem>
 						<ListItem>https://reactdom.com/issues/55</ListItem>
-						<ListItem>Stephen Grider, Tyler McGinnis, Dan Abramov, Eri Elliott</ListItem>
+						<ListItem>Stephen Grider, Tyler McGinnis, Dan Abramov, Eric Elliott</ListItem>
 					</List>
 				</Slide>
 			</Deck>
