@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import KeyPad from './KeyPad';
 import Display from './Display';
+import { getValue } from '../util/calc';
 import '../styles/Calculator.css';
 
 export default class Calculator extends Component {
@@ -17,12 +18,20 @@ export default class Calculator extends Component {
 		this.onText = this.onText.bind(this);
 	}
 
+	display (value) {
+
+	}
+
 	onButton (e) {
-		console.log('button', e.target.textContent);
+		const value = getValue(e.target.textContent);
+		console.log('button', value);
+		this.display(value);
 	}
 
 	onText (e) {
-		console.log('e.key', e.key);
+		const value = getValue(e.key);
+		console.log('e.key', value);
+		this.display(value);
 	}
 
 	render () {
