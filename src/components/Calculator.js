@@ -7,12 +7,6 @@ export default class Calculator extends Component {
 	constructor () {
 		super();
 
-		this.state = {
-			text: '',
-			mode: null,
-			expression: []
-		};
-
 		this.onButton = this.onButton.bind(this);
 		this.onText = this.onText.bind(this);
 	}
@@ -28,7 +22,7 @@ export default class Calculator extends Component {
 	render () {
 		return (<div className="calculator">
 			<header>Calculator</header>
-			<Display onText={this.onText} value={this.state.text} />
+			<Display onText={this.onText}  />
 			<KeyPad onButton={this.onButton}/>
 		</div>);
 	}
