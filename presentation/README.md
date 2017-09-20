@@ -1,1 +1,0 @@
-# Node School Presentation: Better React Workshop
