@@ -19,7 +19,13 @@ export default class Calculator extends Component {
 	}
 
 	display (value) {
-
+		const text = this.state.text;
+		if (value.type === 'digit') {
+			this.setState({ text: text + value.value });
+		}
+		else if (value.type === 'clear') {
+			this.setState({ text: '' });
+		}
 	}
 
 	onButton (e) {
