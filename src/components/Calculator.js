@@ -9,9 +9,7 @@ export default class Calculator extends Component {
 		super();
 
 		this.state = {
-			text: '',
-			mode: null,
-			expression: []
+			text: ''
 		};
 
 		this.onButton = this.onButton.bind(this);
