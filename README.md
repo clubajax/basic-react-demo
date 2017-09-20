@@ -1,1 +1,3 @@
-# React Basic App Demo
+# basic-react-demo
+Code for demonstrating how to build a basic react app
+Demo, Presentation, and Sandbox Folders all are separate create-react-app apps...
