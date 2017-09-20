@@ -10,7 +10,7 @@ export default class Calculator extends Component {
 	}
 
 	onButton (e) {
-		console.log('button', e.target.textContent);
+		console.log('button', e.target.value);
 	}
 
 	onText (e) {
