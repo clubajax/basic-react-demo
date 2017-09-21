@@ -46,6 +46,7 @@
 	font-size: 24px;
 	outline: 0;
 	cursor: pointer;
+    width: 24%;
 }
 .calculator section.buttons button:hover{
 	background-color: #ddd;
